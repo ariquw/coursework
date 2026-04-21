@@ -300,6 +300,7 @@ header {
 }
 
 .action-button {
+    display: inline-block;
     width: min(30vw, 300px);
     color: #211009;
     font-family: 'Tenor Sans';
@@ -312,10 +313,12 @@ header {
     cursor: pointer;
     transition: 0.4s ease;
     text-align: center; 
+    text-decoration: none;
 }
 
 .action-button:hover {
     background-color: #a07b6181;
+    text-decoration: none;
 }
 
 .decorative-line-action {

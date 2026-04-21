@@ -72,7 +72,7 @@
                     Каждый раз случайный. Листайте разделы, узнавайте историю,
                     устройство и интересные факты не выходя из дома. 
                 </p>
-                <button class="action-button">Перейти к изучению</button>
+                <a href="#" class="action-button" id="go-to-exhibit">Перейти к изучению</a>
             </div>
 
             <div class="decorative-line-action" aria-hidden="true">
@@ -133,5 +133,18 @@
     </footer>
 
     <script src="js/script.js"></script>
+
+    <script>
+        document.getElementById('go-to-exhibit').addEventListener('click', async (e) => {
+            e.preventDefault();
+            try {
+                const response = await fetch('/api/random');
+                const data = await response.json();
+                window.location.href = `/exhibit.html?item=${data.slug}`;
+            } catch (error) {
+                window.location.href = '/exhibit.html?item=vinyl-player';
+            }
+        });
+    </script>
 </body>
 </html>
