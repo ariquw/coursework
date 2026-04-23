@@ -1,12 +1,26 @@
 class ExhibitLoader {
     constructor() {
-        this.slug = new URLSearchParams(window.location.search).get('item') || 'vinyl-player';
+        this.slug = new URLSearchParams(window.location.search).get('item');
         this.init();
     }
 
     async init() {
+        if (!this.slug) {
+            await this.loadRandomSlug();
+        }
         await this.loadData();
         this.setupRandomLink();
+    }
+
+    async loadRandomSlug() {
+        try {
+            const res = await fetch('/api/random');
+            const data = await res.json();
+            this.slug = data.slug;
+        } catch (error) {
+            console.error('Ошибка загрузки случайного:', error);
+            this.slug = 'vinyl-player'; 
+        }
     }
 
     async loadData() {
@@ -31,7 +45,7 @@ class ExhibitLoader {
         
         sections.forEach(section => {
             const hasImage = section.image_url && section.image_url.trim() !== '';
-            const paragraphs = section.content.split('\n\n').filter(p => p.trim());
+            const paragraphs = section.content ? section.content.split('\n\n').filter(p => p.trim()) : [];
             
             if (section.section_type === 'facts') {
                 const facts = section.content
@@ -49,12 +63,26 @@ class ExhibitLoader {
                 container.innerHTML += `
                     <section id="facts" class="exhibit-section">
                         <h2 class="section-title">${section.title}</h2>
-                        <div class="facts-grid">
-                            ${factsHtml}
+                        <div class="facts-grid">${factsHtml}</div>
+                    </section>
+                `;
+                return;
+            }
+            
+            if (section.section_type === 'device') {
+                const allParas = paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+                
+                container.innerHTML += `
+                    <section id="device" class="exhibit-section with-blur">
+                        <div class="section-blur-circle right"></div>
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="section-content full-text">
+                            <div class="text-block">${allParas}</div>
+                            ${this.renderGallery(section)}
                         </div>
                     </section>
                 `;
-                return; 
+                return;
             }
             
             if (hasImage && paragraphs.length >= 1) {
@@ -72,26 +100,38 @@ class ExhibitLoader {
                                     <img class="section-image" src="${section.image_url}" alt="${section.title}">
                                 </div>
                             </div>
-                            <div class="remaining-text">
-                                ${remainingParas}
-                            </div>
+                            <div class="remaining-text">${remainingParas}</div>
+                            ${this.renderGallery(section)}
                         </div>
                     </section>
                 `;
-            } else {
-                const allParas = paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
-                container.innerHTML += `
-                    <section id="${section.section_type}" class="exhibit-section">
-                        <h2 class="section-title">${section.title}</h2>
-                        <div class="section-content full-text">
-                            <div class="text-block">
-                                ${allParas}
-                            </div>
-                        </div>
-                    </section>
-                `;
+                return;
             }
+            
+            const allParas = paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+            container.innerHTML += `
+                <section id="${section.section_type}" class="exhibit-section">
+                    <h2 class="section-title">${section.title}</h2>
+                    <div class="section-content full-text">
+                        <div class="text-block">${allParas}</div>
+                        ${this.renderGallery(section)}
+                    </div>
+                </section>
+            `;
         });
+    }
+
+    renderGallery(section) {
+        if (!section.gallery || section.gallery.length === 0) return '';
+        
+        const galleryHtml = section.gallery.map(item => `
+            <div class="gallery-item">
+                <img src="${item.image_url}" alt="${item.caption || ''}">
+                ${item.caption ? `<div class="caption">${item.caption}</div>` : ''}
+            </div>
+        `).join('');
+        
+        return `<div class="section-gallery">${galleryHtml}</div>`;
     }
 
     createNavigation(sections) {

@@ -10,7 +10,7 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'museum_db',
-    password: 'P@ssw0rd', 
+    password: 'P@ssw0rd',
     port: 5432,
 });
 
@@ -42,14 +42,27 @@ app.get('/api/exhibit/:slug', async (req, res) => {
             return res.status(404).json({ error: 'Not found' });
         }
         
-        const sections = await pool.query(
+        const sectionsResult = await pool.query(
             'SELECT * FROM exhibit_sections WHERE exhibit_id = $1 ORDER BY order_number',
             [exhibit.rows[0].id]
         );
         
+        const sectionsWithGallery = await Promise.all(
+            sectionsResult.rows.map(async (section) => {
+                const gallery = await pool.query(
+                    'SELECT * FROM section_gallery WHERE section_id = $1 ORDER BY order_number',
+                    [section.id]
+                );
+                return {
+                    ...section,
+                    gallery: gallery.rows
+                };
+            })
+        );
+
         res.json({
             ...exhibit.rows[0],
-            sections: sections.rows
+            sections: sectionsWithGallery
         });
     } catch (err) {
         console.error(err);
