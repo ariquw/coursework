@@ -164,7 +164,7 @@ header {
 
 .text-with-image .first-para {
     float: left;
-    width: calc(100% - 470px);
+    width: calc(100% - 490px);
     margin: 0 20px 20px 0;
     font-family: 'Tenor Sans', sans-serif;
     font-size: clamp(1.1rem, 1.8vw, 1.3rem);
@@ -225,6 +225,52 @@ header {
     width: 100%;
     height: auto;
     display: block;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 3vh;
+}
+
+.fact-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(33, 16, 9, 0.15);
+    border-radius: 20px;
+    padding: 35px 25px 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(160, 123, 97, 0.2);
+    border-color: #A07B61;
+}
+
+.fact-card .fact-number {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-family: 'Cormorant Unicase', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(160, 123, 97, 0.2);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.fact-card p {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #211009;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* Footer */

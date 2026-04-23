@@ -33,6 +33,30 @@ class ExhibitLoader {
             const hasImage = section.image_url && section.image_url.trim() !== '';
             const paragraphs = section.content.split('\n\n').filter(p => p.trim());
             
+            if (section.section_type === 'facts') {
+                const facts = section.content
+                    .split('\n')
+                    .filter(f => f.trim())
+                    .map(f => f.replace(/^[•\-●]\s*/, '').trim());
+                
+                const factsHtml = facts.map((fact, i) => `
+                    <div class="fact-card">
+                        <span class="fact-number">${String(i + 1).padStart(2, '0')}</span>
+                        <p>${fact}</p>
+                    </div>
+                `).join('');
+                
+                container.innerHTML += `
+                    <section id="facts" class="exhibit-section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="facts-grid">
+                            ${factsHtml}
+                        </div>
+                    </section>
+                `;
+                return; 
+            }
+            
             if (hasImage && paragraphs.length >= 1) {
                 const firstPara = paragraphs[0].replace(/\n/g, '<br>');
                 const remainingParas = paragraphs.slice(1).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
