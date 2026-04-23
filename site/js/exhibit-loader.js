@@ -67,7 +67,10 @@ class ExhibitLoader {
                         <div class="section-content with-image">
                             <div class="text-with-image">
                                 <p class="first-para">${firstPara}</p>
-                                <img class="section-image" src="${section.image_url}" alt="${section.title}">
+                                <div class="image-wrapper">
+                                    <div class="circle-behind"></div>
+                                    <img class="section-image" src="${section.image_url}" alt="${section.title}">
+                                </div>
                             </div>
                             <div class="remaining-text">
                                 ${remainingParas}
