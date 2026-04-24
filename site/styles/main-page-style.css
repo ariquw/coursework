@@ -371,6 +371,7 @@ footer {
     width: 100%;
     height: auto;
     margin: 0 auto;
+    background-color: transparent;
 }
 
 .circle-gradient-footer {
@@ -489,4 +490,254 @@ footer > span:last-of-type {
     padding-top: 2vh;
     justify-self: center;
     width: 100%;
+}
+
+/* адаптив */
+
+@media (max-width: 768px) {
+    body {
+        padding: 5vh 6vw;
+    }
+    
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-header {
+        gap: 5vw;
+    }
+    
+    .nav-header a {
+        font-size: 0.9rem;
+    }
+    
+    .circle-gradient-header {
+        width: 250px;
+        height: 250px;
+        right: -10vw;
+        top: -8vh;
+        filter: blur(60px);
+        opacity: 0.5;
+    }
+    
+    .banner {
+        margin-top: 12vh;
+        gap: 3vh;
+    }
+    
+    .title-banner {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle-banner {
+        font-size: 0.95rem;
+    }
+    
+    .banner svg {
+        max-width: 70%;
+    }
+    
+    .circle-gradient {
+        width: 350px;
+        height: 350px;
+        opacity: 0.5;
+        left: -10vw;
+        top: -10vh;
+    }
+    
+    .purpose-block {
+        flex-direction: column;
+        gap: 4vh;
+        margin-top: 20vh;
+    }
+    
+    .purpose-desc {
+        width: 100%;
+    }
+    
+    .purpose-title {
+        font-size: 2rem;
+    }
+    
+    .purpose-paragraph {
+        font-size: 1rem;
+    }
+    
+    .purpose-img {
+        display: none;
+    }
+    
+    .circle-gradient-purpose {
+        width: 300px;
+        height: 300px;
+        opacity: 0.4;
+        right: -10vw;
+    }
+    
+    .decorative-line {
+        display: none;
+    }
+    
+    .action-block {
+        flex-direction: column;
+        height: auto;
+        gap: 5vh;
+        margin-top: 20vh;
+    }
+    
+    .action-img {
+        display: none;
+    }
+    
+    .circle-gradient-action {
+        width: 350px;
+        height: 350px;
+        opacity: 0.5;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .action-desc {
+        width: 100%;
+    }
+    
+    .action-paragraph {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .action-button {
+        font-size: 0.95rem;
+        width: 200px;
+        padding: 7px 15px;
+    }
+    
+    .decorative-line-action {
+        display: none;
+    }
+    
+    footer {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+        margin-top: 20vh;
+        padding: 8vh 0 3vh 0;
+        justify-items: start;
+    }
+    
+    footer .logo {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        justify-self: start;
+    }
+    
+    .footer-nav {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        justify-self: start;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .footer-nav a {
+        font-size: 1rem;
+    }
+    
+    footer address {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        justify-self: start;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    footer address a {
+        font-size: 0.95rem;
+    }
+    
+    footer address .social-icons {
+        justify-content: flex-start;
+    }
+    
+    footer > span:last-of-type {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        font-size: 0.85rem;
+        text-align: left;
+    }
+    
+    .footer-venzel {
+        width: 280px;
+    }
+    
+    .circle-gradient-footer {
+        width: 150px;
+        height: 150px;
+        left: 50%;
+        bottom: 10vh;
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 4vh 5vw;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .nav-header a {
+        font-size: 0.75rem;
+    }
+    
+    .title-banner {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle-banner {
+        font-size: 0.8rem;
+    }
+    
+    .purpose-title {
+        font-size: 1.4rem;
+    }
+    
+    .purpose-paragraph {
+        font-size: 0.85rem;
+    }
+    
+    .action-paragraph {
+        font-size: 0.85rem;
+    }
+    
+    .action-button {
+        font-size: 0.85rem;
+        width: 170px;
+        padding: 6px 12px;
+    }
+    
+    .circle-gradient-purpose {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .circle-gradient-action {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .footer-nav a {
+        font-size: 0.9rem;
+    }
+    
+    footer address a {
+        font-size: 0.85rem;
+    }
 }
