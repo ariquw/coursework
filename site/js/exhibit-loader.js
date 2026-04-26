@@ -97,7 +97,7 @@ class ExhibitLoader {
                                 <p class="first-para">${firstPara}</p>
                                 <div class="image-wrapper">
                                     <div class="circle-behind"></div>
-                                    <img class="section-image" src="${section.image_url}" alt="${section.title}">
+                                    <img class="section-image" src="${section.image_url}" alt="${section.title}" loading="lazy">
                                 </div>
                             </div>
                             <div class="remaining-text">${remainingParas}</div>
@@ -126,7 +126,7 @@ class ExhibitLoader {
         
         const galleryHtml = section.gallery.map(item => `
             <div class="gallery-item">
-                <img src="${item.image_url}" alt="${item.caption || ''}">
+                <img src="${item.image_url}" alt="${item.caption || ''}" loading="lazy">
                 ${item.caption ? `<div class="caption">${item.caption}</div>` : ''}
             </div>
         `).join('');
