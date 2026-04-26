@@ -512,44 +512,67 @@ footer > span:last-of-type {
 
 /* адаптив */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     body {
-        padding: 3vh 5vw;
+        padding: 4vh 6vw;
     }
     
     header {
-        flex-direction: column;
-        gap: 3vh;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .nav-header {
+        gap: 3vw;
     }
     
     .nav-header a {
-        font-size: 1rem;
+        font-size: 0.65rem;
     }
     
-    .exhibit-title {
-        font-size: 2rem;
-    }
-    
-    .exhibit-intro {
-        font-size: 1rem;
+    .circle-gradient-header {
+        width: 100px;
+        height: 100px;
+        right: -5vw;
+        top: -5vh;
+        filter: blur(30px);
     }
     
     .exhibit-banner {
         margin-top: 10vh;
     }
     
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 4vh;
+    .exhibit-title {
+        font-size: 1.5rem;
+    }
+    
+    .exhibit-venzel svg {
+        max-width: 70%;
+    }
+    
+    .exhibit-intro {
+        font-size: 0.8rem;
+    }
+    
+    .circle-gradient {
+        width: 200px;
+        height: 200px;
+        left: -10vw;
+        top: 8vh;
+        filter: blur(50px);
     }
     
     .exhibit-section {
-        margin-top: 10vh;
+        margin-top: 12vh;
     }
     
-    .section-content.with-image {
-        display: flex;
-        flex-direction: column;
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 3vh;
     }
     
     .text-with-image {
@@ -560,51 +583,424 @@ footer > span:last-of-type {
     .text-with-image .first-para {
         float: none;
         width: 100%;
-        margin: 0 0 20px 0;
+        margin: 0 0 15px 0;
+        font-size: 0.85rem;
     }
     
     .image-wrapper {
         float: none;
+        max-width: 180px;
+        margin: 0 auto 15px;
+    }
+    
+    .image-wrapper .circle-behind {
+        width: 130px;
+        height: 130px;
+        left: 95px;
+        filter: blur(15px);
+    }
+    
+    .image-wrapper .section-image {
         max-width: 100%;
-        margin: 0 auto 20px;
-        order: -1;
     }
     
     .text-with-image .section-image {
         float: none;
-        max-width: 100%;
+        max-width: 180px;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    .remaining-text {
+        font-size: 0.85rem;
+    }
+    
+    .text-block {
+        font-size: 0.85rem;
     }
     
     .facts-grid {
         grid-template-columns: 1fr;
     }
     
-    .section-gallery {
-        grid-template-columns: repeat(2, 1fr);
+    .fact-card {
+        padding: 20px 15px 15px;
     }
     
-    .circle-gradient,
-    .circle-gradient-footer,
+    .fact-card .fact-number {
+        font-size: 1.6rem;
+        top: 5px;
+        left: 10px;
+    }
+    
+    .fact-card p {
+        font-size: 0.85rem;
+    }
+    
+    .section-gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .gallery-item img {
+        height: 100px;
+    }
+    
+    .gallery-item .caption {
+        font-size: 0.7rem;
+        padding: 6px;
+    }
+    
     .section-blur-circle {
-        opacity: 0.3;
+        width: 180px;
+        height: 180px;
+        filter: blur(55px);
+    }
+    
+    .section-blur-circle.right {
+        right: -8vw;
     }
     
     footer {
         grid-template-columns: 1fr;
-        gap: 4vh;
+        gap: 3vh;
         margin-top: 15vh;
-        text-align: center;
+        padding: 8vh 0 3vh 0;
+        text-align: left;
+        justify-items: start;
     }
     
-    footer .logo,
-    .footer-nav,
+    footer .logo {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    
+    .footer-nav {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    
+    .footer-nav a {
+        font-size: 0.85rem;
+    }
+    
     footer address {
         grid-column: 1 / 2;
-        justify-self: center;
-        align-items: center;
+        grid-row: 3 / 4;
+    }
+    
+    footer address a {
+        font-size: 0.8rem;
+    }
+    
+    footer address .social-icons {
+        justify-content: flex-start;
     }
     
     footer > span:last-of-type {
         grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        font-size: 0.75rem;
+    }
+    
+    .footer-venzel {
+        width: 220px;
+        top: -4px;
+        padding: 0 10px;
+    }
+    
+    .circle-gradient-footer {
+        width: 90px;
+        height: 90px;
+        left: 33vw;
+        bottom: 37vh;
+        filter: blur(20px);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 5vh 7vw;
+    }
+    
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-header {
+        gap: 4vw;
+    }
+    
+    .nav-header a {
+        font-size: 0.8rem;
+    }
+    
+    .circle-gradient-header {
+        width: 200px;
+        height: 200px;
+        right: -5vw;
+        top: -5vh;
+        filter: blur(50px);
+        opacity: 0.4;
+    }
+    
+    .exhibit-banner {
+        margin-top: 12vh;
+    }
+    
+    .exhibit-title {
+        font-size: 2rem;
+    }
+    
+    .exhibit-venzel svg {
+        max-width: 70%;
+    }
+    
+    .exhibit-intro {
+        font-size: 0.9rem;
+    }
+    
+    .circle-gradient {
+        width: 240px;
+        height: 240px;
+        left: -8vw;
+        top: -5vh;
+        filter: blur(70px);
+        opacity: 0.35;
+    }
+    
+    .exhibit-section {
+        margin-top: 14vh;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 4vh;
+    }
+    
+    .text-with-image {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .text-with-image .first-para {
+        float: none;
+        width: 100%;
+        margin: 0 0 18px 0;
+        font-size: 0.95rem;
+    }
+    
+    .image-wrapper {
+        float: none;
+        max-width: 220px;
+        margin: 0 auto 18px;
+    }
+    
+    .image-wrapper .circle-behind {
+        width: 160px;
+        height: 160px;
+        filter: blur(40px);
+        opacity: 0.4;
+    }
+    
+    .image-wrapper .section-image {
+        max-width: 100%;
+    }
+    
+    .text-with-image .section-image {
+        float: none;
+        max-width: 220px;
+        margin: 0 auto 18px;
+        display: block;
+    }
+    
+    .remaining-text {
+        font-size: 0.95rem;
+    }
+    
+    .text-block {
+        font-size: 0.95rem;
+    }
+    
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fact-card {
+        padding: 25px 20px 20px;
+    }
+    
+    .fact-card p {
+        font-size: 0.9rem;
+    }
+    
+    .section-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    
+    .gallery-item img {
+        height: 120px;
+    }
+    
+    .section-blur-circle {
+        width: 240px;
+        height: 240px;
+        filter: blur(60px);
+        opacity: 0.35;
+    }
+    
+    footer {
+        grid-template-columns: 1fr;
+        gap: 3.5vh;
+        margin-top: 18vh;
+        padding: 8vh 0 3vh 0;
+        text-align: left;
+        justify-items: start;
+    }
+    
+    footer .logo {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    
+    .footer-nav {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    
+    .footer-nav a {
+        font-size: 0.95rem;
+    }
+    
+    footer address {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+    
+    footer address a {
+        font-size: 0.9rem;
+    }
+    
+    footer address .social-icons {
+        justify-content: flex-start;
+    }
+    
+    footer > span:last-of-type {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        font-size: 0.8rem;
+    }
+    
+    .footer-venzel {
+        width: 260px;
+        top: -7px;
+        padding: 0 12px;
+    }
+    
+    .circle-gradient-footer {
+        width: 120px;
+        height: 120px;
+        left: 40%;
+        bottom: 12vh;
+        filter: blur(45px);
+        opacity: 0.35;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    body {
+        padding: 5vh 6vw;
+    }
+
+    .exhibit-banner {
+        margin-top: 10vh;
+    }
+    
+    .exhibit-section {
+        margin-top: 12vh;
+    }
+
+    .exhibit-title {
+        font-size: 3.5rem;
+        margin-top: 10vh;
+    }
+    
+    .circle-gradient {
+        width: 330px;
+        height: 330px;
+        top: 4vh;
+    }
+
+    .circle-gradient-header {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 5vh;
+    }
+    
+    .image-wrapper {
+        max-width: 200px;
+    }
+
+    .text-with-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-with-image .first-para {
+        width: 100%;
+        margin: 0;
+    }
+
+    .image-wrapper .circle-behind {
+        width: 200px;
+        height: 200px;
+        left: 9vw;
+    }
+
+    .text-with-image .section-image {
+        width: 250px;
+        height: 300px;
+        margin-right: 0px;
+    }
+    
+    .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .section-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .section-blur-circle {
+        width: 300px;
+        height: 300px;
+        filter: blur(80px);
+    }
+
+    .exhibit-section.with-blur {
+        margin-top: 10vh;
+    }
+    
+    footer {
+        margin-top: 25vh;
+    }
+    
+    .circle-gradient-footer {
+        width: 140px;
+        height: 140px;
+        filter: blur(40px);
+        top: 9vh;
+        left: 3vw;
     }
 }
