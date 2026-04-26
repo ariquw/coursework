@@ -70,6 +70,10 @@ app.get('/api/exhibit/:slug', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Сервер запущен: http://localhost:${PORT}`);
-});
+module.exports = app;
+
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`http://localhost:${PORT}`);
+    });
+}
